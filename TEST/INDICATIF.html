@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numéro de téléphone avec indicatif et validation</title>
+    <style>
+        .phone-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        select, input[type="tel"] {
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        input[type="tel"] {
+            flex: 1;
+        }
+
+        .error, .success {
+            color: red;
+            display: none;
+        }
+
+        .success {
+            color: green;
+        }
+
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h3>Entrez votre numéro de téléphone</h3>
+    
+    <div class="phone-input">
+        <!-- Champ pour choisir l'indicatif -->
+        <select id="country-code" name="country-code">
+            <option value="+1" data-minlength="10" data-maxlength="10">🇺🇸 +1 (USA)</option>
+            <option value="+33" data-minlength="9" data-maxlength="9">🇫🇷 +33 (France)</option>
+            <option value="+229" data-minlength="8" data-maxlength="8">🇧🇯 +229 (Bénin)</option>
+            <option value="+44" data-minlength="10" data-maxlength="10">🇬🇧 +44 (Royaume-Uni)</option>
+            <option value="+49" data-minlength="10" data-maxlength="11">🇩🇪 +49 (Allemagne)</option>
+        </select>
+
+        <!-- Champ pour entrer le numéro -->
+        <input type="tel" id="phone-number" name="phone-number" placeholder="Numéro de téléphone" required>
+    </div>
+
+    <!-- Bouton pour vérifier le numéro -->
+    <button id="verify-button">Vérifier</button>
+
+    <!-- Messages d'erreur et de succès -->
+    <p class="error" id="error-message">Numéro incorrect pour ce pays.</p>
+    <p class="success" id="success-message">Numéro valide!</p>
+
+    <script>
+        const countryCodeSelect = document.getElementById('country-code');
+        const phoneNumberInput = document.getElementById('phone-number');
+        const errorMessage = document.getElementById('error-message');
+        const successMessage = document.getElementById('success-message');
+        const verifyButton = document.getElementById('verify-button');
+
+        // Fonction pour valider le numéro de téléphone en fonction de l'indicatif
+        function validatePhoneNumber() {
+            const selectedOption = countryCodeSelect.options[countryCodeSelect.selectedIndex];
+            const minLength = selectedOption.getAttribute('data-minlength');
+            const maxLength = selectedOption.getAttribute('data-maxlength');
+            const phoneNumber = phoneNumberInput.value;
+
+            if (phoneNumber.length >= minLength && phoneNumber.length <= maxLength) {
+                return true; // Numéro valide
+            } else {
+                return false; // Numéro invalide
+            }
+        }
+
+        // Événement sur le bouton "Vérifier"
+        verifyButton.addEventListener('click', () => {
+            if (validatePhoneNumber()) {
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+            } else {
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

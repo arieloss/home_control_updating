@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Home Control</title>
+    <link rel="stylesheet" href="principal.css">
+</head>
+<body>
+    <div class="auth-page">
+        <div class="login-container">
+            <div class="auth-content">
+                <div class="logo-container">
+                    <img src="assets/images/logo-sm.svg" alt="Logo" height="28">
+                    <span class="logo-text">Home Control</span>
+                </div>
+                <div class="welcome-message">
+                    <h5>Welcome Back!</h5>
+                    <p>Sign in to continue to Home Control.</p>
+                </div>
+                <form class="login-form" action="index.html">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="Enter username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-container">
+                            <input type="password" id="password" placeholder="Enter password" required>
+                            <button type="button" id="toggle-password"><i class="icon-eye"></i></button>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="login-button">Log In</button>
+                </form>
+                <div class="social-login">
+                    <p>- Sign in with -</p>
+                    <div class="social-buttons">
+                        <a href="#" class="social-btn fb">Facebook</a>
+                        <a href="#" class="social-btn twitter">Twitter</a>
+                        <a href="#" class="social-btn google">Google</a>
+                    </div>
+                </div>
+                <div class="signup-message">
+                    <p>Don't have an account? <a href="register.html">Signup now</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="principal.js"></script>
+</body>
+</html>

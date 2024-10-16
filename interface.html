@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <title>ESP32 Home Automation</title>
+        <link rel="stylesheet" href="interface.css">
+    </head>
+    
+    <body>
+        <h1>ESP32 SMART Home!</h1>
+        <div class='container'>
+            <!-- les boutonts pour les relais seront genere ici-->
+            <div class='relay'><h3>Relay</h3>
+                <p>
+                    <a href='/toggle?id=" + String(i) + "'>
+                        <button id='btn" + String(i + 1) + "' class='%btn" + String(i + 1) + "class%'>btn" + String(i + 1) + "txt</button>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <script>interface.js</script>
+    </body>
+</html>
